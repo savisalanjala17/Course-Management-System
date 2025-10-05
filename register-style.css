@@ -1,0 +1,90 @@
+/* Reset some default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Page background and center alignment */
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  padding: 20px;
+}
+
+/* Heading */
+h1 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #222;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Form container */
+form {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Labels */
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 500;
+}
+
+/* Inputs & Selects */
+input[type="text"],
+input[type="email"],
+select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus {
+  border-color: #FA709A;
+  outline: none;
+  box-shadow: 0 0 8px rgba(250,112,154,0.3);
+}
+
+/* Submit button (optional, you can add it to form) */
+/* Button styling */
+button {
+  display: block;             /* Makes it a block element for centering */
+  margin: 20px auto 0 auto;   /* Top margin 20px, horizontally centered */
+  background: #4a90e2;
+  color: white;
+  border: none;
+  padding: 12px 30px;         /* Padding controls the size */
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  width: auto;                /* Auto width fits content */
+}
+
+/* Hover effect */
+button:hover {
+  background: #357ABD;
+  transform: translateY(-2px);
+}
+
