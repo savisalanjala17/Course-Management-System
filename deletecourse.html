@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Course</title>
+  <style>
+    /* Reset default browser styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* Full page styling */
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    /* Card container */
+    .container {
+      background-color: #ffffff;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      width: 360px;
+      text-align: center;
+    }
+
+    /* Title */
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      color: #222;
+      letter-spacing: 1px;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Input field */
+    input {
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: 0.2s;
+      width: 90%;
+    }
+
+    input:focus {
+      border-color: #e74c3c;
+      outline: none;
+      box-shadow: 0 0 4px rgba(231, 76, 60, 0.5);
+    }
+
+    /* Delete button */
+    button {
+      background: #4a90e2;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #357ABD;
+      transform: translateY(-2px);
+    }
+
+    /* Message text */
+    .message {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Delete Course</h2>
+
+    <form id="deleteForm">
+      <input type="text" id="course_id" placeholder="Enter Course ID" required />
+      <button type="submit">Delete Course</button>
+    </form>
+
+    <div class="message" id="message"></div>
+  </div>
+
+  <script>
+    const API_URL = "http://localhost:8080/delete"; // Backend endpoint
+
+    document.getElementById("deleteForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const messageBox = document.getElementById("message");
+      const courseId = document.getElementById("course_id").value.trim();
+
+      if (!courseId) {
+        messageBox.style.color = "red";
+        messageBox.textContent = "⚠️ Please enter a Course ID!";
+        return;
+      }
+
+      const confirmDelete = confirm(`Are you sure you want to delete course '${courseId}'?`);
+      if (!confirmDelete) return;
+
+      try {
+        const response = await fetch(`${API_URL}/${courseId}`, {
+          method: "DELETE",
+        });
+
+        if (response.ok) {
+          messageBox.style.color = "green";
+          messageBox.textContent = "🗑️ Course deleted successfully!";
+          e.target.reset();
+        } else if (response.status === 404) {
+          messageBox.style.color = "red";
+          messageBox.textContent = "❌ Course not found!";
+        } else {
+          messageBox.style.color = "red";
+          messageBox.textContent = "⚠️ Failed to delete course!";
+        }
+      } catch (error) {
+        messageBox.style.color = "red";
+        messageBox.textContent = "⚠️ Error: Could not connect to server.";
+      }
+    });
+  </script>
+</body>
+</html>

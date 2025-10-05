@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REGISTER COURSE</title>
+  <link rel="stylesheet" href="CSS/register-style.css">
+</head>
+<body>
+
+  <h1>Kick start with an exciting course!</h1>
+
+  <form id="registerForm" action="http://localhost:8080/courses/register" method="post">
+    <label for="name">Enter your name: </label><br>
+    <input type="text" name="name"><br>
+
+    <label for="email_id">Enter your Email: </label><br>
+    <input type="email" name="email_id"><br>
+
+    <label for="course_name">Choose a course </label><br>
+    <select id="course" name="course_name">
+      <option value="Programing in java">Programing in java</option>
+      <option value="Spring Boot">Spring Boot</option>
+      <option value="C Programming">C Programming</option>
+    </select>
+
+    <br><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    const form = document.getElementById("registerForm");
+    form.addEventListener("submit", function(event) {
+      // Optional: remove the next line if you want to actually submit to server
+      // event.preventDefault();
+
+      alert("Registration Successful!");
+    });
+  </script>
+</body>
+</html>

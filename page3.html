@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="CSS/page3.css">
+<script type="text/javascript" src="JS/page3.js"></script>
+<title>Login Page</title>
+
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Admin Login</h2>
+    <input type="text" id="admin-username" placeholder="Username" />
+    <input type="password" id="admin-password" placeholder="Password" />
+    <button onclick="login('admin')">Login as Admin</button>
+    <div class="message" id="admin-message"></div>
+</div>
+
+<div class="login-container">
+    <h2>Student Login</h2>
+    <input type="text" id="student-username" placeholder="Username" />
+    <input type="password" id="student-password" placeholder="Password" />
+    <button onclick="login('student')">Login as Student</button>
+    <div class="message" id="student-message"></div>
+</div>
+
+
+</body>
+</html>
